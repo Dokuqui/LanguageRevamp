@@ -1,8 +1,13 @@
 use clap::{Arg, Command};
-use std::process::Command as ProcessCommand;
-use which::which;
+use go::check::check_go_version;
+use go::update::update_go;
+use crate::go::update::{fetch_latest_go_version, install_go};
 
-fn main() {
+mod go;
+mod utils;
+
+#[tokio::main]
+async fn main() {
     let matches = Command::new("language-revamp")
         .version("0.1.0")
         .author("Ddokubi")
@@ -15,43 +20,53 @@ fn main() {
                         .short('c')
                         .long("check")
                         .help("Check the current Go version")
-                        .num_args(0),
+                        .action(clap::ArgAction::SetTrue),
                 )
                 .arg(
                     Arg::new("update")
                         .short('u')
                         .long("update")
                         .help("Update Go to the latest version")
-                        .num_args(0),
+                        .action(clap::ArgAction::SetTrue),
+                )
+                .arg(
+                    Arg::new("download")
+                        .short('d')
+                        .long("download")
+                        .help("Download the latest version")
+                        .action(clap::ArgAction::SetTrue),
                 ),
         )
         .get_matches();
 
     if let Some(go_matches) = matches.subcommand_matches("go") {
-        if go_matches.contains_id("check") {
-            check_go_version();
-        } else if go_matches.contains_id("update") {
-            println!("Updating Go to the latest version...");
+        let check = go_matches.get_one::<bool>("check").copied().unwrap_or(false);
+        let update = go_matches.get_one::<bool>("update").copied().unwrap_or(false);
+        let download = go_matches.get_one::<bool>("download").copied().unwrap_or(false);
+
+        if check && update && download {
+            eprintln!("Error: You can't use --check and --update together.");
+            std::process::exit(1);
+        } else if check {
+            println!("Running check command...");
+            if let Err(e) = check_go_version().await {
+                eprintln!("Error checking Go version: {}", e);
+            }
+        } else if update {
+            println!("Running update command...");
+            if let Err(e) = update_go().await {
+                eprintln!("Error updating Go: {}", e);
+            }
+        } else if download {
+            let version = fetch_latest_go_version().await.unwrap();
+            println!("Downloading and installing Go version: {}", version);
+            if let Err(e) = install_go(&version).await {
+                eprintln!("Error installing Go: {}", e);
+            }
         } else {
             println!("Run 'language-revamp go --help' for usage instructions.");
         }
     } else {
-        println!("Run 'language-revamp --help' for usage instructions.")
-    }
-}
-
-fn check_go_version() {
-    match which("go") {
-        Ok(path) => {
-            println!("Go found at: {}", path.display());
-            match ProcessCommand::new("go").arg("version").output() {
-                Ok(output) => {
-                    let version_info = String::from_utf8_lossy(&output.stdout);
-                    println!("Installed Go version: {}", version_info.trim());
-                }
-                Err(_) => println!("Error: Unable to retrieve Go version."),
-            }
-        }
-        Err(_) => println!("Go is not installed or not found in PATH."),
+        println!("Run 'language-revamp --help' for usage instructions.");
     }
 }
