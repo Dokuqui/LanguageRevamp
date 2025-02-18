@@ -1,0 +1,8 @@
+[package]
+name = "LanguageRevamp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.30", features = ["derive"] }
+which = "7.0.2"
