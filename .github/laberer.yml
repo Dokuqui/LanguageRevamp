@@ -1,0 +1,52 @@
+﻿# Labeler configuration for Language Revamp repository
+
+# Label PRs modifying Rust-related files
+rust:
+  - "src/rust/**"
+  - "Cargo.toml"
+  - "Cargo.lock"
+
+# Label PRs modifying Go-related files
+go:
+  - "src/go/**"
+  - "go.mod"
+  - "go.sum"
+
+# Label PRs modifying Python-related files
+python:
+  - "src/python/**"
+  - "requirements.txt"
+  - "pyproject.toml"
+
+# Label PRs modifying CLI functionality
+cli:
+  - "src/cli/**"
+
+# Label PRs modifying GitHub Actions or CI/CD workflows
+ci:
+  - ".github/workflows/**"
+
+# Label PRs modifying README or documentation
+documentation:
+  - "README.md"
+  - "docs/**"
+
+# Label PRs modifying general utility functions
+utilities:
+  - "src/utils/**"
+
+# Label PRs modifying dependency-related files
+dependencies:
+  - "Cargo.toml"
+  - "go.mod"
+  - "requirements.txt"
+  - "package.json"
+  - "pnpm-lock.yaml"
+
+# Label PRs modifying configuration files
+config:
+  - ".github/**"
+  - ".gitignore"
+  - ".editorconfig"
+  - "tsconfig.json"
+  - "eslint.config.js"
