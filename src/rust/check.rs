@@ -2,9 +2,7 @@
 use std::error::Error;
 
 pub async fn check_rust_version() -> Result<String, Box<dyn Error + Send + Sync>> {
-    println!("Executing Rust version check...");
-
-    let output = Command::new("rustc")
+   let output = Command::new("rustc")
         .arg("--version")
         .output();
 
