@@ -44,16 +44,18 @@ async fn get_installed_go_version() -> Result<String, Box<dyn Error + Send + Syn
 fn uninstall_go() -> Result<(), Box<dyn Error + Send + Sync>> {
     let os = get_os();
 
-    // List of potential Go installation paths
     let potential_paths = match os {
         OS::Windows => vec![
             "C:\\Program Files\\Go".to_string(),
-            "C:\\Go".to_string(), // Some users may install Go here
-            // Add any custom paths users may have
+            "C:\\Go".to_string(),
         ],
         OS::Linux => vec![
             "/usr/local/go".to_string(),
-            // Add user-specific installation paths, e.g., in the home directory
+            "$HOME/go".to_string(),
+        ],
+        OS::MacOS => vec![
+            "/usr/local/go".to_string(),
+            "/opt/go".to_string(),
             "$HOME/go".to_string(),
         ],
         OS::Unknown => return Err("Unsupported OS for Go uninstallation".into()),
@@ -84,6 +86,7 @@ pub async fn install_go(version: &str) -> Result<(), Box<dyn Error + Send + Sync
     let download_url = match os {
         OS::Windows => format!("https://go.dev/dl/{}.windows-amd64.msi", version),
         OS::Linux => format!("https://go.dev/dl/{}.linux-amd64.tar.gz", version),
+        OS::MacOS => format!("https://go.dev/dl/{}.darwin-amd64.tar.gz", version),
         OS::Unknown => return Err("Unsupported OS for Go installation".into()),
     };
 
@@ -108,7 +111,7 @@ pub async fn install_go(version: &str) -> Result<(), Box<dyn Error + Send + Sync
                 .args(["/i", file_name, "/quiet", "/norestart"])
                 .status()?;
         }
-        OS::Linux => {
+        OS::Linux | OS::MacOS => {
             ProcessCommand::new("sudo")
                 .args(["tar", "-C", "/usr/local", "-xzf", file_name])
                 .status()?;
@@ -123,10 +126,8 @@ pub async fn install_go(version: &str) -> Result<(), Box<dyn Error + Send + Sync
 }
 
 pub async fn update_go() -> Result<(), Box<dyn Error + Send + Sync>> {
-    println!("Checking installed Go version...");
     let installed_version = get_installed_go_version().await.unwrap_or_else(|_| "None".to_string());
 
-    println!("Fetching latest Go version...");
     let latest_version = fetch_latest_go_version().await?;
 
     if installed_version == "None" {

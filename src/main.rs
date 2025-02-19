@@ -2,6 +2,8 @@ mod go;
 mod rust;
 mod cli;
 mod utils;
+mod python;
+
 use cli::{build_cli, handle_cli};
 
 #[tokio::main]
