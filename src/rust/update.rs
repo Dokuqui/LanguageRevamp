@@ -38,7 +38,7 @@ pub async fn update_rust() -> Result<(), Box<dyn Error + Send + Sync>> {
     let latest_version = fetch_latest_version_rust().await?;
 
     if installed_version_cleaned == latest_version {
-        println!("✅ Rust is already up to date ({}). No update needed.", installed_version_cleaned);
+        println!("✅ Rust is already up to date ({}).", installed_version_cleaned);
     } else {
         println!("🔄 Updating Rust from {} to {}...", installed_version_cleaned, latest_version);
         let status = Command::new("rustup")
