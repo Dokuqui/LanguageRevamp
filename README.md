@@ -1,5 +1,15 @@
 # 🛠 Language Revamp
 
+![Rust](https://img.shields.io/badge/Rust-1.56+-orange)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Crates.io](https://img.shields.io/crates/v/language-revamp.svg)](https://crates.io/crates/language-revamp)
+[![Platform Support](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux%20%7C%20macOS-blueviolet)]()
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Dokuqui/LanguageRevamp/.github/workflows/rust.yml?branch=main)](https://github.com/Dokuqui/LanguageRevamp/actions)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/Dokuqui/LanguageRevamp.svg)](https://github.com/Dokuqui/LanguageRevamp/commits/main)
+[![GitHub Code Size](https://img.shields.io/github/languages/code-size/Dokuqui/LanguageRevamp)](https://github.com/Dokuqui/LanguageRevamp)
+
+![LanguageRevamp](https://socialify.git.ci/Dokuqui/LanguageRevamp/image?description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&name=1&owner=1&pattern=Floating+Cogs&pulls=1&stargazers=1&theme=Auto)
+
 **Language Revamp** is a cross-platform CLI tool for managing programming language installations and updates.  
 Currently, it supports **Go**, **Rust**, and **Python** with commands to **check**, **update**, and **install** these languages.
 
