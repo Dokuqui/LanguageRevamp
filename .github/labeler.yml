@@ -18,10 +18,6 @@ python:
   - "requirements.txt"
   - "pyproject.toml"
 
-# Label PRs modifying CLI functionality
-cli:
-  - "src/cli/**"
-
 # Label PRs modifying GitHub Actions or CI/CD workflows
 ci:
   - ".github/workflows/**"
