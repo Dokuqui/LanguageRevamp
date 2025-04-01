@@ -121,6 +121,7 @@ pub async fn install_go(version: &str) -> Result<(), Box<dyn Error + Send + Sync
         }
     }
 
+    fs::remove_file(file_name)?;
     println!("Go {} installed successfully!", version);
     Ok(())
 }
