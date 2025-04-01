@@ -4,6 +4,7 @@ mod cli;
 mod utils;
 mod python;
 mod nodejs;
+mod java;
 
 use cli::{build_cli, handle_cli};
 
