@@ -1,7 +1,10 @@
 [package]
 name = "LanguageRevamp"
-version = "0.1.0"
-edition = "2021"
+version = "1.0.0"
+edition = "2024"
+description = "CLI unified tool to check, update, install programming languages."
+license = "MIT"
+repository = "https://github.com/Dokuqui/LanguageRevamp"
 
 [dependencies]
 clap = { version = "4.5.30", features = ["derive"] }

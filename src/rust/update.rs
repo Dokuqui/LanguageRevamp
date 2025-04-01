@@ -42,7 +42,7 @@ pub async fn update_rust() -> Result<(), Box<dyn Error + Send + Sync>> {
     } else {
         println!("🔄 Updating Rust from {} to {}...", installed_version_cleaned, latest_version);
         let status = Command::new("rustup")
-            .args(["update", "stable"])
+            .arg("update")
             .status()?;
 
         if status.success() {

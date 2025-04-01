@@ -5,7 +5,7 @@ use crate::rust::cli::{rust_subcommand, handle_rust_commands};
 
 pub fn build_cli() -> Command {
     Command::new("language-revamp")
-        .version("0.1.0")
+        .version("1.0.0")
         .author("Ddokubi")
         .about("A CLI tool to manage programming languages")
         .subcommand(go_subcommand())
