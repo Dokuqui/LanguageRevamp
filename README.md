@@ -20,6 +20,10 @@ Currently, it supports **Go**, **Rust**, and **Python** with commands to **check
 - 📦 **Install** missing languages if not detected.
 - 🖥️ Supports **Windows** and **Linux (Debian, Ubuntu, WSL)**, also should work on **MacOS**.
 
+## 🛑
+
+- **JAVA** functionality not yet fully tested.
+
 ## 📥 Installation (Local Development)
 
 To use **Language Revamp** locally:
@@ -115,11 +119,13 @@ Example:
 🔧 Supported Languages
 ----------------------
 
-| Language | Check | Install | Update |
-| --- | --- | --- | --- |
-| **Go** | ✅ | ✅ | ✅ |
-| **Rust** | ✅ | ✅ | ✅ |
-| **Python** | ✅ | ✅ | ✅ |
+| Language    | Check | Install | Update |
+|-------------| --- | --- | --- |
+| **Go**      | ✅ | ✅ | ✅ |
+| **Rust**    | ✅ | ✅ | ✅ |
+| **Python**  | ✅ | ✅ | ✅ |
+| **Node JS** | ✅ | ✅ | ✅ |
+| **JAVA**    | ✅ | ✅ | ✅ |
 
 🚀 Future Installation Methods (Planned)
 ----------------------
