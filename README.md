@@ -2,7 +2,7 @@
 
 ![Rust](https://img.shields.io/badge/Rust-1.56+-orange)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Crates.io](https://img.shields.io/crates/v/language-revamp.svg)](https://crates.io/crates/LanguageRevamp)
+[![Crates.io](https://img.shields.io/crates/v/LanguageRevamp.svg)](https://crates.io/crates/LanguageRevamp)
 [![Platform Support](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux%20%7C%20macOS-blueviolet)]()
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/Dokuqui/LanguageRevamp.svg)](https://github.com/Dokuqui/LanguageRevamp/commits/main)
 [![GitHub Code Size](https://img.shields.io/github/languages/code-size/Dokuqui/LanguageRevamp)](https://github.com/Dokuqui/LanguageRevamp)
